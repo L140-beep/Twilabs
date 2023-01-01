@@ -7,24 +7,23 @@
     <title>Welcome to Twilabs!</title>
 </head>
 <body>
-    <form action=/send>
+    <form method="POST" action='/auth'>
         @csrf
         <label>Login</label>
         <input name='login' type="text" placeholder="example@example.com" value={{old('login')}}>
         <label>Password</label>
         <input name='password' type="password" placeholder="password..">
 
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+        @if(isset($login_error))
+            <div class="alert alert-danger">
+                {{$login_error}}
+            </div>
         @endif
-
-        <button>Log in</button>
+        <button type='submit'>Log in</button>
     </form>
+
+    <div> 
+        <a href='/registration'>Don't have account yet?</a>
+    </div>
 </body>
 </html>
