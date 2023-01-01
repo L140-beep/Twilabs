@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class AuthController extends Controller
 {
     public function show(){
@@ -16,6 +17,7 @@ class AuthController extends Controller
         
         foreach($users->all() as $user){
             if($user->email == $request['login'] && $user->password == $request['password']){
+                DB::table('users')->where('email', $request['login'])->update(['last_visit_at' => Carbon::now()->toDateTimeString()]);
                 return redirect('/');
             }
         }
