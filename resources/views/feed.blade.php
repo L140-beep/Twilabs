@@ -7,15 +7,15 @@
     <form method="POST" action='/new_post'>
         @csrf
         <input name='content' maxlength='255' type="text" placeholder="very interesting post...">
-        
         <button type='submit'>Post</button>
     </form>
 
-
-    @foreach($posts as $post)
-        {{$post->id}}
+    @for($i = 0; $i < count($users); $i++)
         <br>
-        {{$post->content}} 
-    @endforeach
+        <a href={{'/users/' . $users[$i]}}>{{$users[$i]}}</a> 
+        <label> {{$posts[$i]->created_at}}</label>
+        <br>
+        {{$posts[$i]->content}} 
+    @endfor
 
 @endsection

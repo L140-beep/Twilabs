@@ -21,7 +21,7 @@ class AuthController extends Controller
         foreach($users->all() as $user){
             if($user->email == $request['login'] && $user->password == $request['password']){
                 DB::table('users')->where('email', $request['login'])->update(['last_visit_at' => Carbon::now()->toDateTimeString()]);
-                session(['id' => $user->id]);
+                session(['id' => $user->id, 'username' => $user->username]);
                 return redirect('/');
             }
         }

@@ -19,16 +19,14 @@ use App\Http\Middleware\UserIsAuthorized;
 */
 
 Route::middleware([UserIsAuthorized::class]) ->group(function(){
-    Route::get("/", function (Posts $posts) {
-        return view('feed', ['posts' => $posts->all()]);
+    Route::get("/", function(){
+        return redirect('feed');
     });
-
+    Route::get("/feed", [PostController::class, 'get_posts']);
     Route::view('company', 'company');
     Route::view('contacts', 'contacts');
 
-    Route::get('users/{user}', function(Users $user){
-        return view('layout_profile', ['id' => $user['id'], 'username' => $user['username']]);
-    });
+    Route::get('users/{user:username}', [PostController::class, 'get_user_posts']);
 
     Route::post('new_post', [PostController::class, 'create_post']);
 });
