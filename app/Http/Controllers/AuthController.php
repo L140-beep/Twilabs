@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 class AuthController extends Controller
 {
-    public function show(){
+    public function show(Request $request){
+        if($request->session()->has('id')){
+            return redirect('/');
+        }
         return view('auth');
     }
 
@@ -18,10 +21,17 @@ class AuthController extends Controller
         foreach($users->all() as $user){
             if($user->email == $request['login'] && $user->password == $request['password']){
                 DB::table('users')->where('email', $request['login'])->update(['last_visit_at' => Carbon::now()->toDateTimeString()]);
+                session(['id' => $user->id]);
                 return redirect('/');
             }
         }
 
         return view('auth', ['login_error' => 'Incorrect email or password']);   
+    }
+
+    public function exit(Request $request){
+        $request->session()->flush();
+
+        return redirect('auth');
     }
 }

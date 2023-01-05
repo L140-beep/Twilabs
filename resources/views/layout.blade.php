@@ -11,10 +11,9 @@
 <body>
     <header>
         Twilabs
-        <a href="form">Form</a>
         <a href="contacts">Contacts</a>
         <a href="company">Company</a>
-        <a href='auth'>Auth </a>
+        <a href='exit'>Exit </a>
     </header>
     <hr>
     @yield('content')
