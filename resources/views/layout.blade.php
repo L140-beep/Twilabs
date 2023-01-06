@@ -17,12 +17,12 @@
             <a class='exit' href='exit'>Exit </a>
         </label>
     </header>
-    @yield('content')
-    @yield('posts')
+    <main>
+        @yield('content')
+        @yield('posts')
+    </main>
     <footer>
-        <hr>
-        (с) Copyright, {{date('Y')}}
-        Footer
+        Twilabs, {{date('Y')}}
     </footer>
 </body>
 </html>

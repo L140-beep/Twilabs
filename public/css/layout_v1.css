@@ -1,6 +1,10 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(240, 251, 255);
 }
 
 header{
@@ -49,4 +53,76 @@ header{
 .menu>.exit:hover{
     color : #ff6666;
     transition: 0.1s all;
+}
+
+footer {
+    display: flex;
+    height: 50px;
+    margin-top: auto;
+    background-color: lightblue;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid lightgray;
+    color: #009acd;
+    font-weight: 600;
+}
+
+main{
+    display: flex;
+    margin: 0 auto;
+    width: 60vw;
+    min-height: 85vh;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+.post{
+    width: 40vw;
+    border-bottom: 1px solid #009acd;
+    font-size: 15px;
+    font-weight:lighter;
+    margin-bottom: 20px;
+}
+
+.nickname{
+    font-weight: 600;
+    font-size: 16px;
+    color: #009acd;
+}
+
+.created_at{
+    font-size: 12px;
+    color: rgb(101, 204, 239);
+}
+
+.new_post{
+    width: 40vw;
+    height: 10vh;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    margin-top: 20px;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: all 0.15ms;
+}
+
+.post-btn{
+    cursor: pointer;
+    margin-left: 10%;
+    margin-top: 5px;
+    height: 30px;
+    align-self: center;
+    width: 80%;
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: #30b7e4;
+    border: 1px solid lightgray;
 }
